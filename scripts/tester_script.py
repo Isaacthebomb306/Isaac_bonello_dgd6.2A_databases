@@ -26,12 +26,12 @@ def random_string(length=10):
 def upload_sprite(file_path):
     with open(file_path, "rb") as file:
         response = requests.post(f"{BASE_URL}upload/sprite", files={"file": file})
-        return response.json()
+        return response#.json()
 
 def upload_audio(file_path):
     with open(file_path, "rb") as file:
         response = requests.post(f"{BASE_URL}upload/audio", files={"file": file})
-        return response.json()
+        return response#.json()
 
 def submit_score(player_name, score):
     score_data = {
@@ -39,7 +39,7 @@ def submit_score(player_name, score):
         "score": score
     }
     response = requests.post(f"{BASE_URL}submit-score", json=score_data)
-    return response.json()
+    return response#.json()
 
 # Test the upload_sprite function by uploading all the data in data/images
 data_dir = "data/images"
