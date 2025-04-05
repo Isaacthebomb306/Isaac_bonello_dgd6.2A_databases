@@ -24,6 +24,9 @@ async def upload_audio(file: UploadFile = File(...)):
 
 @app.post("/submit-score")
 async def submit_score(score: dict):
+    # Validate the score data
+    if "player_name" not in score or "score" not in score:
+        return {"error": "Invalid data"}
     result = await db.player_scores.insert_one(score)
     return {"id": str(result.inserted_id)}
 

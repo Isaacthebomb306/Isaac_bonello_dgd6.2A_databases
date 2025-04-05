@@ -1,6 +1,4 @@
-jokeapi 
 requests
-
 fastapi
 uvicorn
 motor

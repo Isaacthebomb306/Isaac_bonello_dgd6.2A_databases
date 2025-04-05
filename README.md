@@ -7,4 +7,4 @@
 - write in the terminal `cd scripts`
 - then write `python -m venv venv`
 - open the folder `& c:/<way to the folder>/scripts/venv/Activate.ps1`
-- install the dependencies: `pip install fastapi uvicorn motor python-dotenv jokeapi requests python-multipart`
+- install the dependencies: `pip install fastapi uvicorn motor python-dotenv requests python-multipart`
