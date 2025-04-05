@@ -1,6 +1,8 @@
 import requests
 import random
 import string
+import json
+import os
 from fastapi import UploadFile, File
 
 # Base URL of the API
@@ -29,13 +31,27 @@ def submit_score(player_name, score):
     response = requests.post(f"{BASE_URL}submit-score", json=score_data)
     return response.json()
 
-# Test the upload_sprite function
-sprite_response = upload_sprite("path/to/sprite.png")
-print("Sprite Upload Response:", sprite_response)
+# Test the upload_sprite function by uploading all the data in data/images
+data_dir = "data/images"
+if not os.path.exists(data_dir):
+    os.makedirs(data_dir)
+else:
+    for filename in os.listdir(data_dir):
+        file_path = os.path.join(data_dir, filename)
+        if os.path.isfile(file_path):
+            sprite_response = upload_sprite(file_path)
+            print(f"Sprite Upload Response for {filename}:", sprite_response)
 
-# Test the upload_audio function
-audio_response = upload_audio("path/to/audio.mp3")
-print("Audio Upload Response:", audio_response)
+# Test the upload_audio function by uploading all the data in data/audio
+data_dir = "data/audio"
+if not os.path.exists(data_dir):
+    os.makedirs(data_dir)
+else:
+    for filename in os.listdir(data_dir):
+        file_path = os.path.join(data_dir, filename)
+        if os.path.isfile(file_path):
+            audio_response = upload_audio(file_path)
+            print(f"Audio Upload Response for {filename}:", audio_response)
 
 # Test the submit_score function
 player_name = random_string()

@@ -29,5 +29,3 @@ async def submit_score(score: dict):
         return {"error": "Invalid data"}
     result = await db.player_scores.insert_one(score)
     return {"id": str(result.inserted_id)}
-
-uvicorn.run(app,host="127.0.0.1", port=8000, log_level="info")
