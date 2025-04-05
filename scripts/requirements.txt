@@ -1,0 +1,8 @@
+jokeapi 
+requests
+
+fastapi
+uvicorn
+motor
+python-dotenv
+python-multipart
