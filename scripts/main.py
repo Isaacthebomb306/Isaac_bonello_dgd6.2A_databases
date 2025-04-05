@@ -10,6 +10,10 @@ app = FastAPI()
 client = AsyncIOMotorClient(os.getenv("MONGO_URI"))
 db = client["game_db"]
 
+@app.get("/")
+async def root():
+    return {"message": "Welcome to the Game API!", "version": "1.0"}
+
 @app.post("/upload/sprite")
 async def upload_sprite(file: UploadFile = File(...)):
     content = await file.read()
